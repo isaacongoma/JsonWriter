@@ -47,7 +47,7 @@
                 "Manojkiran\\JsonWriter\\JsonWriterServiceProvider"
             ],
             "aliases": {
-                "JsonWriter": "Manojkiran\\JsonWriter\\JsonWriterFacade"
+                "JsonWriter": "Manojkiran\\JsonWriter\\Facades\\JsonWriter"
             }
         }
     }
