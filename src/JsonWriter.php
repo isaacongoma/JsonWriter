@@ -4,6 +4,7 @@ namespace Manojkiran\JsonWriter;
 
 use Illuminate\Support\Collection as SupportCollection;
 use Illuminate\Database\Eloquent\Model;
+use Manojkiran\JsonWriter\Exceptions\FileNotLoadedException;
 
 /**
  * Read and write 
@@ -70,6 +71,9 @@ class JsonWriter
      **/
     public function write($contents, $allowDuplicate = true)
     {
+        if( $this->filePath === null){
+            throw new FileNotLoadedException("Json File is Not Loaded");
+        }
         if ( $contents instanceof SupportCollection) 
         {
             if( $contents->first() instanceof Model)
