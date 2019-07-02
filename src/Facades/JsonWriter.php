@@ -1,6 +1,6 @@
 <?php
 
-namespace Manojkiran\JsonWriter;
+namespace Manojkiran\JsonWriter\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
