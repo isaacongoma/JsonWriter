@@ -172,7 +172,7 @@ class JsonWriter
         foreach ($fileLines as $lineNumber => $eachLine) {
             $finalArray[] = json_decode($eachLine, true);
         }
-
+        
         return $finalArray;
     }
     /**

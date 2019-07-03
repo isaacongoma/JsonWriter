@@ -18,11 +18,20 @@ You can install the package via composer:
 composer require manojkiran/jsonwriter
 ```
 
+## Import
+
+``` php
+
+use Manojkiran\JsonWriter\Facades\JsonWriter;
+
+```
+
 ## Usage
 
 # Writing
 
 ## Writing the Content to Json
+
 
 ``` php
 
@@ -60,7 +69,7 @@ composer require manojkiran/jsonwriter
     $jsonFilePath   = storage_path('jsonWriter.json');
     //loading the Json File and Writing the Content to it
     $writeToJson    = JsonWriter::load( $jsonFilePath)
-                        ->write($usersList);                
+                        ->parseFile();
 
 ```
 
