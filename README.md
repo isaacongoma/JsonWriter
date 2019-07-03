@@ -1,11 +1,14 @@
-# Very short description of the package
+# Write PHP array to json File
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/manojkiran/jsonwriter.svg?style=flat-square)](https://packagist.org/packages/manojkiran/jsonwriter)
-[![Build Status](https://img.shields.io/travis/manojkiran/jsonwriter/master.svg?style=flat-square)](https://travis-ci.org/manojkiran/jsonwriter)
-[![Quality Score](https://img.shields.io/scrutinizer/g/manojkiran/jsonwriter.svg?style=flat-square)](https://scrutinizer-ci.com/g/manojkiran/jsonwriter)
-[![Total Downloads](https://img.shields.io/packagist/dt/manojkiran/jsonwriter.svg?style=flat-square)](https://packagist.org/packages/manojkiran/jsonwriter)
+[![Latest Stable Version](https://poser.pugx.org/manojkiran/jsonwriter/v/stable?format=flat-square)](https://packagist.org/packages/manojkiran/jsonwriter)
+[![Total Downloads](https://poser.pugx.org/manojkiran/jsonwriter/downloads?format=flat-square)](https://packagist.org/packages/manojkiran/jsonwriter)
+[![Latest Unstable Version](https://poser.pugx.org/manojkiran/jsonwriter/v/unstable?format=flat-square)](https://packagist.org/packages/manojkiran/jsonwriter)
+[![License](https://poser.pugx.org/manojkiran/jsonwriter/license?format=flat-square)](https://packagist.org/packages/manojkiran/jsonwriter)
+[![Monthly Downloads](https://poser.pugx.org/manojkiran/jsonwriter/d/monthly?format=flat-square)](https://packagist.org/packages/manojkiran/jsonwriter)
+[![Daily Downloads](https://poser.pugx.org/manojkiran/jsonwriter/d/daily?format=flat-square)](https://packagist.org/packages/manojkiran/jsonwriter)
+[![Laravel5.8](https://img.shields.io/badge/Laravel-Framework-red.svg?style=flat-square)](https://www.laravel.com/)
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
+Read and write PHP array| Laravel Collection | EloquentCollection to json file
 
 ## Installation
 
@@ -18,7 +21,13 @@ composer require manojkiran/jsonwriter
 ## Usage
 
 ``` php
-// Usage description here
+
+    $usersList      = User::where('status','=','Active')->get();
+
+	$jsonFilePath   = storage_path('jsonWriter.json');
+	
+	$writeToJson    = JsonWriter::load( $file)
+				        ->write( $usersList);
 ```
 
 ### Testing

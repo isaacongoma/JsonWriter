@@ -69,7 +69,7 @@ class JsonWriter
      * @param bool $allowDuplicate
      * @return $this
      **/
-    public function write($contents, $allowDuplicate = true)
+    public function write($contents, $allowDuplicate = false)
     {
         if( $this->filePath === null){
             throw new FileNotLoadedException("Json File is Not Loaded");
