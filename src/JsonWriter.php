@@ -5,6 +5,7 @@ namespace Manojkiran\JsonWriter;
 use Illuminate\Support\Collection as SupportCollection;
 use Illuminate\Database\Eloquent\Model;
 use Manojkiran\JsonWriter\Exceptions\FileNotLoadedException;
+use Manojkiran\JsonWriter\Exceptions\FileNotValidExtension;
 
 /**
  * Read and write 
@@ -35,6 +36,13 @@ class JsonWriter
     protected $writtenSize = false;
 
     /**
+     * Valid Extension of the File.
+     *
+     * @var string
+     */
+    protected $fileExtension = null;
+
+    /**
      * Loads the New File
      *
      * @param string $filePath
@@ -46,7 +54,27 @@ class JsonWriter
 
         $this->fileName = $this->getFileFormPath();
 
+        $this->fileExtension = $this->getExtensionOfFile();
+
         return $this;
+    }
+
+    /**
+     * Gets the Extension for the File
+     *
+     * @param Type $var Description
+     * @return type
+     * @throws conditon
+     **/
+    public function getExtensionOfFile()
+    {
+        $path = pathinfo( $this->filePath);
+
+        $extension = isset($path['extension']) ? $path['extension'] : null;
+
+        if ($extension !== 'json') {
+            throw new FileNotValidExtension();
+        }
     }
 
     /**
@@ -72,7 +100,7 @@ class JsonWriter
     public function write($contents, $allowDuplicate = false)
     {
         if( $this->filePath === null){
-            throw new FileNotLoadedException("Json File is Not Loaded");
+            throw new FileNotLoadedException();
         }
         if ( $contents instanceof SupportCollection) 
         {

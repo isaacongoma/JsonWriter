@@ -20,20 +20,35 @@ composer require manojkiran/jsonwriter
 
 ## Usage
 
+## Writing the Content to Json
+
 ``` php
 
-    //Writing the Content to Json File
-    
     //get the List of Active users
     $usersList      = User::where('status','=','Active')->get();
     //getting the path where the file is available
-	$jsonFilePath   = storage_path('jsonWriter.json');
-	//loading the Json File and Writing the Content to it
-	$writeToJson    = JsonWriter::load( $file)
-                        ->write($usersList);
-                        
+    $jsonFilePath   = storage_path('jsonWriter.json');
+    //loading the Json File and Writing the Content to it
+    $writeToJson    = JsonWriter::load( $file)
+                        ->write($usersList);                
 
 ```
+
+## Writing the Content to Json(Force)
+
+``` php
+//by default the duplicate Content Will Not to Writtent To Json File(To Reduce the data Size)
+
+    //array of the Projects by Taylor Otwell
+    $laravel = ['name' => 'Taylor Otwell','developed' => ['Laravel','Lumen','Telescope','Nova']];
+    //getting the path where the file is available
+    $jsonFilePath   = storage_path('jsonWriter.json');
+    //loading the Json File and Writing the Content to it
+    $writeToJson    = JsonWriter::load( $laravel)
+                        ->write($usersList,true);              
+
+```
+
 
 ### Testing
 
