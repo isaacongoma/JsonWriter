@@ -73,7 +73,7 @@ class JsonWriter
         $extension = isset($path['extension']) ? $path['extension'] : null;
 
         if ($extension !== 'json') {
-            throw new FileNotValidExtension();
+            throw new FileNotValidExtension( 'is Not a Valid Json File');
         }
     }
 
@@ -100,7 +100,7 @@ class JsonWriter
     public function write($contents, $allowDuplicate = false)
     {
         if( $this->filePath === null){
-            throw new FileNotLoadedException();
+            throw new FileNotLoadedException( 'Json File is Not Loaded');
         }
         if ( $contents instanceof SupportCollection) 
         {
@@ -143,10 +143,23 @@ class JsonWriter
     /**
      * Formats written json data as Collection
      *
+     * @author Manojkiran.A <manojkiran10031998@gmail.com>
      * @param bool $skipEmptyLines
      * @return SupportCollection
      **/
     public function parseFile($skipEmptyLines = false)
+    {
+        return (new SupportCollection($this->parseFileAsArray($skipEmptyLines)));
+    }
+
+    /**
+     * Parse the File to the Array
+     * 
+     * @author Manojkiran.A <manojkiran10031998@gmail.com>
+     * @param bool $skipEmptyLines
+     * @return array
+     **/
+    protected function parseFileAsArray($skipEmptyLines = false)
     {
         $finalArray = [];
 
@@ -156,22 +169,26 @@ class JsonWriter
             $fileLines = file($this->filePath);
         }
 
-        foreach ( $fileLines as $lineNumber => $eachLine) {
-            $finalArray[] = json_decode( $eachLine, true);
+        foreach ($fileLines as $lineNumber => $eachLine) {
+            $finalArray[] = json_decode($eachLine, true);
         }
-        return (new SupportCollection( $finalArray));
+
+        return $finalArray;
     }
-
-    
-
-    // search in given file for specified array
-    public function searchForExisting(array $array)
+    /**
+     * Search for the Existing Content in the json file
+     *
+     * @author Manojkiran.A <manojkiran10031998@gmail.com>
+     * @param array $arrayOfData
+     * @return bool
+     **/
+    public function searchForExisting($arrayOfData)
     {
         $fileData = $this->parseFile();
 
-        if ( $fileData) {
-            foreach ( $fileData as $subArray) {
-                if ($array === $subArray) {
+        if ($fileData) {
+            foreach ($fileData as $subArray) {
+                if ($arrayOfData === $subArray) {
                     return true;
                 }
             }

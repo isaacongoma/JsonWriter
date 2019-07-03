@@ -20,6 +20,8 @@ composer require manojkiran/jsonwriter
 
 ## Usage
 
+# Writing
+
 ## Writing the Content to Json
 
 ``` php
@@ -29,7 +31,7 @@ composer require manojkiran/jsonwriter
     //getting the path where the file is available
     $jsonFilePath   = storage_path('jsonWriter.json');
     //loading the Json File and Writing the Content to it
-    $writeToJson    = JsonWriter::load( $file)
+    $writeToJson    = JsonWriter::load( $jsonFilePath)
                         ->write($usersList);                
 
 ```
@@ -44,8 +46,21 @@ composer require manojkiran/jsonwriter
     //getting the path where the file is available
     $jsonFilePath   = storage_path('jsonWriter.json');
     //loading the Json File and Writing the Content to it
-    $writeToJson    = JsonWriter::load( $laravel)
-                        ->write($usersList,true);              
+    $writeToJson    = JsonWriter::load( $jsonFilePath)
+                        ->write($laravel,true);             
+
+```
+
+# Reading
+``` php
+
+    //get the List of Active users
+    $usersList      = User::where('status','=','Active')->get();
+    //getting the path where the file is available
+    $jsonFilePath   = storage_path('jsonWriter.json');
+    //loading the Json File and Writing the Content to it
+    $writeToJson    = JsonWriter::load( $jsonFilePath)
+                        ->write($usersList);                
 
 ```
 
