@@ -22,12 +22,17 @@ composer require manojkiran/jsonwriter
 
 ``` php
 
+    //Writing the Content to Json File
+    
+    //get the List of Active users
     $usersList      = User::where('status','=','Active')->get();
-
+    //getting the path where the file is available
 	$jsonFilePath   = storage_path('jsonWriter.json');
-	
+	//loading the Json File and Writing the Content to it
 	$writeToJson    = JsonWriter::load( $file)
-				        ->write( $usersList);
+                        ->write($usersList);
+                        
+
 ```
 
 ### Testing
