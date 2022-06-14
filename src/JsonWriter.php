@@ -128,11 +128,11 @@ class JsonWriter
 
             if (!$isDuplicate) {
 
-                $result = file_put_contents($this->filePath, json_encode( $newContents) . PHP_EOL, FILE_APPEND | LOCK_EX);
+                $result = file_put_contents($this->filePath, json_encode( $newContents, JSON_PRETTY_PRINT) . PHP_EOL, FILE_APPEND | LOCK_EX);
             }
         } else {
             
-            $result = file_put_contents($this->filePath, json_encode( $newContents) . PHP_EOL, FILE_APPEND | LOCK_EX);
+            $result = file_put_contents($this->filePath, json_encode( $newContents, JSON_PRETTY_PRINT) . PHP_EOL, FILE_APPEND | LOCK_EX);
         }
 
         $this->writtenSize = $result;
