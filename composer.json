@@ -1,5 +1,5 @@
 {
-    "name": "manojkiran/jsonwriter",
+    "name": "isaacongoma/jsonwriter",
     "description": "Reads and Writes PHP array or Laravel Collection to JSON file",
     "keywords": [
         "manojkiran",
